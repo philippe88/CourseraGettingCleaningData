@@ -27,14 +27,12 @@ Below files are required in the working directory:
 - use 'alldata' to generate tidyset.txt
 
 ## Measurements in tidyset
-68 measurements were averaged in this tidy set, each is normalized and bounded within [-1,1] in the original dataset
 
 - subject: individual performing the activity
 - activity: string describing one of the 6 activities performed
+- 68 measurements are averaged in this tidy set: each is normalized and bounded within [-1,1] in the original dataset
 
 ## How to interpret the feature names
-- subject: individual performing the activity
-- activity: string describing one of the 6 activities performed
 - Variables starting with 't' are time domain measures
 - Variables starting with 'f' are frequency domain measures (Fast Fourier Transform of time measures)
 - Variable ending in 'xyz' indicate the 3-axial X,Y.Z direction being measured
