@@ -16,7 +16,7 @@ testing$subject  <- read.table("test/subject_test.txt")
 testing$activity <- read.table("test/y_test.txt")
 
 # combine all measurements in one data frame, restricting to vars of type mean/std
-subvars <- grep("-mean|-std",features$feature)
+subvars <- grep("-mean\\(|-std\\(",features$feature)
 alldata <- rbind(training[,subvars], testing[,subvars])
 names(alldata) <- features[subvars, "feature"]
 
@@ -42,4 +42,6 @@ alldata$activity <- activity_all
 library(dplyr)
 g    <- group_by(alldata, subject, activity)
 tidy <- summarize_each(g, funs(mean))
+# rename the 'std' columns to clarify that these are averages
+names(tidy) <- gsub("std", "meanstd", names(tidy))
 write.table(tidy, file="tidyset.txt", row.names = FALSE)
